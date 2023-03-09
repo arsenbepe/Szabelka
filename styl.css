@@ -1,0 +1,167 @@
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap);
+
+body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0em;
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  background-color: #4a3427;
+}
+header {
+  margin-top: 0em;
+  text-align: center;
+  align-content: center;
+  width: 100%;
+  height: 8rem;
+}
+
+.pudloNaKosc {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.kostkaImg {
+  display: flex;
+  align-self: center;
+  width: 8em;
+  top: 30%;
+  transform: translateX(13px);
+}
+
+.wynikRzutu {
+  display: absolute;
+  align-self: center;
+  font-size: 4em;
+  font-family: "Times New Roman", Times, serif;
+  top: 3%;
+  z-index: 1;
+  transform: translateY(-120%);
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.pojSrod {
+  width: 30%;
+  text-align: center;
+  color: aqua;
+}
+
+.pojLP {
+  width: 31%;
+}
+
+.dropdown-contentL {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 0;
+  top: 1rem;
+  background-color: #4a3427;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 200ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.dropdownL > .dropbtn:focus + .dropdown-contentL {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdownR > .dropbtnR:focus + .dropdown-contentR {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown-contentR {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  right: 0;
+  top: 1rem;
+  background-color: #4a3427;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 200ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.dropdownL {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+}
+
+.wolodImg {
+  width: 100%;
+}
+
+.bohunImg {
+  width: 100%;
+}
+
+.dropbtnR {
+  width: 179px;
+}
+
+.dropbtn {
+  width: 179px;
+}
+
+footer {
+  display: flex;
+}
+
+.miRam {
+  display: flex;
+  height: 12px;
+  width: 104px;
+  background-color: aqua;
+  align-items: center;
+  justify-content: center;
+}
+
+.miHP {
+  height: 10px;
+  width: 100px;
+  background-color: red;
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.boRam {
+  display: flex;
+  float: right;
+  height: 12px;
+  width: 104px;
+  background-color: aqua;
+  align-items: center;
+  justify-content: center;
+}
+
+.boHP {
+  height: 10px;
+  width: 100px;
+  background-color: red;
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+button {
+  border-radius: 5px;
+}
+
+.hidden {
+  /* opacity: 0; */
+  display: none;
+}
