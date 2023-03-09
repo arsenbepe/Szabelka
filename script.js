@@ -27,4 +27,4 @@ let restart = function () {
 // });
 
 restart();
-console.log(i);
+console.log("very yes i");
