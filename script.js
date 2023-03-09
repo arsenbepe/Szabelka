@@ -27,3 +27,4 @@ let restart = function () {
 // });
 
 restart();
+console.log(i);
