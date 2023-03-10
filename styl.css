@@ -109,15 +109,18 @@ section {
 }
 
 .dropbtnR {
-  width: 179px;
+  width: 100%;
 }
 
 .dropbtn {
-  width: 179px;
+  width: 100%;
 }
 
 footer {
   display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .miRam {
@@ -161,7 +164,23 @@ button {
   border-radius: 5px;
 }
 
+button:hover {
+  background-color: yellow;
+}
+
 .hidden {
   /* opacity: 0; */
   display: none;
+}
+
+.ramka {
+  border-color: aqua;
+  background-color: yellow;
+}
+
+.zwieracz {
+}
+
+.restart {
+  background-color: orange;
 }
