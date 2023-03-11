@@ -21,13 +21,14 @@ const btnMich = document.querySelector(".dropbtn");
 const turl = document.querySelector(".turlaj");
 const nowa = document.querySelector(".restart");
 
+//bede chcial to rozpisac na konkretne przyciski zeby bylo przejrzyscie ale na wszelki wypadek dodalem arraye
 const michButDef = [akcjeD1B, akcjeD1P, akcjeD1U];
 const michButOff = [akcjeO1C, akcjeO1K, akcjeO1P];
 const bohButDef = [akcjeD2B, akcjeD2P, akcjeD2U];
 const bohButOff = [akcjeO2C, akcjeO2K, akcjeO2P];
 
-// let michal buttony (dekBut, dekoBut), bohun buttony (bekBut, bekoBut), assignmenty dla gracza aktywnego i postaci (michal, boh, aktywny);
-let dekBut, dekoBut, bekBut, bekoBut, michal, boh, aktywny;
+// let michal buttony (dekBut, dekoBut), bohun buttony (bekBut, bekoBut), assignmenty dla gracza aktywnego i postaci (michal, boh, aktywny)
+let dekBut, dekoBut, bekBut, bekoBut, michal, boh, aktywny, atak, obrona, rzut;
 let graczAkt = 1;
 const graTrwa = true;
 
@@ -52,19 +53,95 @@ let restart = function () {
 let rundaNew = function () {
   wiadAtt.textContent = " ";
   wiadDef.textContent = " ";
+  for (const dekBut of michButDef) {
+    dekBut.classList.toggle("hidden");
+  }
+  for (const bekoBut of bohButOff) {
+    bekoBut.classList.toggle("hidden");
+  }
+  for (const bekBut of bohButDef) {
+    bekBut.classList.toggle("hidden");
+  }
+  for (const dekoBut of michButOff) {
+    dekoBut.classList.toggle("hidden");
+  }
 };
 
 turl.addEventListener("click", function () {
-  const k100 = Math.trunc(Math.random() * 100) + 1;
+  const rzut = Math.trunc(Math.random() * 100) + 1;
+  k100.textContent = `${rzut}`;
   console.log(k100);
-  wiadRzu.textContent = `Gracz wyrzucił ${k100}`;
+  wiadRzu.textContent = `Gracz wyrzucił ${rzut}`;
   rundaNew();
 });
 
+//okreslam parametry opcji ofensywnych i defensywnych
 nowa.addEventListener("click", function () {
   restart();
 });
 
+akcjeO1C.addEventListener("click", function () {
+  atak = 70;
+  wiadAtt.textContent = `Szansa Ataku ${atak}%`;
+});
+
+akcjeO1P.addEventListener("click", function () {
+  atak = 50;
+  wiadAtt.textContent = `Szansa Ataku ${atak}%`;
+});
+
+akcjeO1K.addEventListener("click", function () {
+  atak = 90;
+  wiadAtt.textContent = `Szansa Ataku ${atak}%`;
+});
+
+akcjeO2C.addEventListener("click", function () {
+  atak = 70;
+  wiadAtt.textContent = `Szansa Ataku ${atak}%`;
+});
+
+akcjeO2P.addEventListener("click", function () {
+  atak = 50;
+  wiadAtt.textContent = `Szansa Ataku ${atak}%`;
+});
+
+akcjeO2K.addEventListener("click", function () {
+  atak = 90;
+  wiadAtt.textContent = `Szansa Ataku ${atak}%`;
+});
+
+akcjeD1B.addEventListener("click", function () {
+  obrona = 40;
+  wiadDef.textContent = `Atak pomniejszony ${obrona}%`;
+});
+
+akcjeD1P.addEventListener("click", function () {
+  obrona = 20;
+  wiadDef.textContent = `Atak pomniejszony ${obrona}%`;
+});
+
+akcjeD1U.addEventListener("click", function () {
+  obrona = 60;
+  wiadDef.textContent = `Atak pomniejszony ${obrona}%`;
+});
+
+akcjeD2B.addEventListener("click", function () {
+  obrona = 40;
+  wiadDef.textContent = `Atak pomniejszony ${obrona}%`;
+});
+
+akcjeD2P.addEventListener("click", function () {
+  obrona = 20;
+  wiadDef.textContent = `Atak pomniejszony ${obrona}%`;
+});
+
+akcjeD2U.addEventListener("click", function () {
+  obrona = 60;
+  wiadDef.textContent = `Atak pomniejszony ${obrona}%`;
+});
+
+//projekt paska progresu jako health bar
+//health.value -= 10;
 // btnNew.addEventListener("click", function () {
 //   console.log("Klikasz");
 // });

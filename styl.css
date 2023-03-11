@@ -184,3 +184,8 @@ button:hover {
 .restart {
   background-color: orange;
 }
+
+.health {
+  background-color: aqua;
+  color: red;
+}
