@@ -20,15 +20,28 @@ const michImg = document.querySelector(".wolodImg");
 const btnMich = document.querySelector(".dropbtn");
 const turl = document.querySelector(".turlaj");
 const nowa = document.querySelector(".restart");
+let hpMich = document.querySelector(".hp1");
+let hpBoh = document.querySelector(".hp2");
+let hpki = document.querySelector(".hp");
 
-//bede chcial to rozpisac na konkretne przyciski zeby bylo przejrzyscie ale na wszelki wypadek dodalem arraye
+//bede chcial to rozpisac na konkretne przyciski zeby bylo przejrzyscie ale na wszelki wypadek dodalem arraye // walic przyciski optymalizacja przez redukcje i chuj
 const michButDef = [akcjeD1B, akcjeD1P, akcjeD1U];
 const michButOff = [akcjeO1C, akcjeO1K, akcjeO1P];
 const bohButDef = [akcjeD2B, akcjeD2P, akcjeD2U];
 const bohButOff = [akcjeO2C, akcjeO2K, akcjeO2P];
 
 // let michal buttony (dekBut, dekoBut), bohun buttony (bekBut, bekoBut), assignmenty dla gracza aktywnego i postaci (michal, boh, aktywny)
-let dekBut, dekoBut, bekBut, bekoBut, michal, boh, aktywny, atak, obrona, rzut;
+let dekBut,
+  dekoBut,
+  bekBut,
+  bekoBut,
+  michal,
+  boh,
+  aktywny,
+  atak,
+  obrona,
+  rzut,
+  atOb;
 let graczAkt = 1;
 const graTrwa = true;
 
@@ -47,7 +60,8 @@ let restart = function () {
   wiadRzu.textContent = " ";
   wiadAtt.textContent = " ";
   wiadDef.textContent = " ";
-  console.log(restart);
+  hpBoh.classList.add("hp");
+  hpMich.classList.remove("hp");
 };
 
 let rundaNew = function () {
@@ -65,15 +79,9 @@ let rundaNew = function () {
   for (const dekoBut of michButOff) {
     dekoBut.classList.toggle("hidden");
   }
+  hpBoh.classList.toggle("hp");
+  hpMich.classList.toggle("hp");
 };
-
-turl.addEventListener("click", function () {
-  const rzut = Math.trunc(Math.random() * 100) + 1;
-  k100.textContent = `${rzut}`;
-  console.log(k100);
-  wiadRzu.textContent = `Gracz wyrzucił ${rzut}`;
-  rundaNew();
-});
 
 //okreslam parametry opcji ofensywnych i defensywnych
 nowa.addEventListener("click", function () {
@@ -138,6 +146,22 @@ akcjeD2P.addEventListener("click", function () {
 akcjeD2U.addEventListener("click", function () {
   obrona = 60;
   wiadDef.textContent = `Atak pomniejszony ${obrona}%`;
+});
+
+//TUTAJ JEST RZUT!!!
+turl.addEventListener("click", function () {
+  const rzut = Math.trunc(Math.random() * 100) + 1;
+  k100.textContent = `${rzut}`;
+  console.log(k100);
+  atOb = atak - obrona;
+  console.log(atOb);
+  if (atOb > rzut) {
+    health.value -= 10;
+    wiadRzu.textContent = `Gracz wyrzucił ${rzut} TRAFIENIE!!! Przeciwnik krwawi jak świnia!`;
+  } else {
+    wiadRzu.textContent = `Atakujący spudłował! \n KOŃCZ WAŚĆ, WSTYYDU OSZCZĘDŹ`;
+  }
+  rundaNew();
 });
 
 //projekt paska progresu jako health bar
