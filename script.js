@@ -45,8 +45,6 @@ let dekBut,
 let graczAkt = 1;
 const graTrwa = true;
 
-console.log(michButDef);
-
 //nowa runda
 let restart = function () {
   k100.textContent = 0;
@@ -56,6 +54,12 @@ let restart = function () {
   for (const bekoBut of bohButOff) {
     bekoBut.classList.add("hidden");
   }
+  for (const dekBut of michButOff) {
+    dekBut.classList.remove("hidden");
+  }
+  for (const bekoBut of bohButDef) {
+    bekoBut.classList.remove("hidden");
+  }
   btnMich.classList.add("ramka");
   wiadRzu.textContent = " ";
   wiadAtt.textContent = " ";
@@ -63,6 +67,8 @@ let restart = function () {
   hpBoh.classList.add("hp");
   hpMich.classList.remove("hp");
 };
+
+restart();
 
 let rundaNew = function () {
   wiadAtt.textContent = " ";
@@ -169,5 +175,3 @@ turl.addEventListener("click", function () {
 // btnNew.addEventListener("click", function () {
 //   console.log("Klikasz");
 // });
-
-restart();
