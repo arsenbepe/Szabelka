@@ -24,6 +24,15 @@ const nowa = document.querySelector(".restart");
 let hpMich = document.querySelector(".hp1");
 let hpBoh = document.querySelector(".hp2");
 let hpki = document.querySelector(".hp");
+const pasekMi = document.querySelector(".miHP");
+const pasekBo = document.querySelector(".boHP");
+document
+  .getElementById("jurHP")
+  .setAttribute("style", "display:block;width:100%");
+
+document
+  .getElementById("wolodHP")
+  .setAttribute("style", "display:block;width:100%");
 
 //bede chcial to rozpisac na konkretne przyciski zeby bylo przejrzyscie ale na wszelki wypadek dodalem arraye // walic przyciski optymalizacja przez redukcje i chuj
 const michButDef = [akcjeD1B, akcjeD1P, akcjeD1U];
@@ -45,7 +54,7 @@ let dekBut,
   atOb;
 let zycMi = 100;
 let zycBo = 100;
-const graTrwa = true;
+let graTrwa = true;
 let aktywny1 = true;
 let aktywny2 = false;
 
@@ -66,9 +75,16 @@ let restart = function () {
   }
   btnMich.classList.add("ramka");
   btnBoh.classList.remove("ramka");
-
+  zycMi = 100;
+  zycBo = 100;
+  graTrwa = true;
   aktywny1 = true;
   aktywny2 = false;
+
+  document.getElementById("jurHP").style.width = `${zycBo}%`;
+  pasekBo.textContent = `${zycBo}HP`;
+  document.getElementById("wolodHP").style.width = `${zycMi}%`;
+  pasekMi.textContent = `${zycMi}HP`;
 
   wiadRzu.textContent = " ";
   wiadAtt.textContent = " ";
@@ -95,13 +111,13 @@ let rundaNew = function () {
   btnMich.classList.toggle("ramka");
   btnBoh.classList.toggle("ramka");
   console.log(btnBoh, btnMich);
-  if ((aktywny1 = true)) {
+  if (aktywny1 === true) {
     aktywny1 = false;
   } else {
     aktywny1 = true;
   }
 
-  if ((aktywny2 = true)) {
+  if (aktywny2 === true) {
     aktywny2 = false;
   } else {
     aktywny2 = true;
@@ -182,10 +198,14 @@ turl.addEventListener("click", function () {
   console.log(atOb);
   if (atOb > rzut) {
     wiadRzu.textContent = `Gracz wyrzucił ${rzut} TRAFIENIE!!! Przeciwnik krwawi jak świnia!`;
-    if ((aktywny1 = true)) {
+    if (aktywny1 === true) {
       zycBo = zycBo - 5;
-    } else if ((aktywny2 = true)) {
+      document.getElementById("jurHP").style.width = `${zycBo}%`;
+      pasekBo.textContent = `${zycBo}HP`;
+    } else {
       zycMi = zycMi - 5;
+      document.getElementById("wolodHP").style.width = `${zycMi}%`;
+      pasekMi.textContent = `${zycMi}HP`;
     }
   } else {
     wiadRzu.textContent = `Atakujący spudłował! \n KOŃCZ WAŚĆ, WSTYYDU OSZCZĘDŹ`;
