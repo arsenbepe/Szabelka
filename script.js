@@ -18,6 +18,7 @@ let wiadAtt = document.querySelector(".procOff");
 let wiadDef = document.querySelector(".procDef");
 const michImg = document.querySelector(".wolodImg");
 const btnMich = document.querySelector(".dropbtn");
+const btnBoh = document.querySelector(".dropbtnR");
 const turl = document.querySelector(".turlaj");
 const nowa = document.querySelector(".restart");
 let hpMich = document.querySelector(".hp1");
@@ -42,8 +43,11 @@ let dekBut,
   obrona,
   rzut,
   atOb;
-let graczAkt = 1;
+let zycMi = 100;
+let zycBo = 100;
 const graTrwa = true;
+let aktywny1 = true;
+let aktywny2 = false;
 
 //nowa runda
 let restart = function () {
@@ -61,11 +65,14 @@ let restart = function () {
     bekoBut.classList.remove("hidden");
   }
   btnMich.classList.add("ramka");
+  btnBoh.classList.remove("ramka");
+
+  aktywny1 = true;
+  aktywny2 = false;
+
   wiadRzu.textContent = " ";
   wiadAtt.textContent = " ";
   wiadDef.textContent = " ";
-  hpBoh.classList.add("hp");
-  hpMich.classList.remove("hp");
 };
 
 restart();
@@ -85,8 +92,20 @@ let rundaNew = function () {
   for (const dekoBut of michButOff) {
     dekoBut.classList.toggle("hidden");
   }
-  hpBoh.classList.toggle("hp");
-  hpMich.classList.toggle("hp");
+  btnMich.classList.toggle("ramka");
+  btnBoh.classList.toggle("ramka");
+  console.log(btnBoh, btnMich);
+  if ((aktywny1 = true)) {
+    aktywny1 = false;
+  } else {
+    aktywny1 = true;
+  }
+
+  if ((aktywny2 = true)) {
+    aktywny2 = false;
+  } else {
+    aktywny2 = true;
+  }
 };
 
 //okreslam parametry opcji ofensywnych i defensywnych
@@ -163,12 +182,19 @@ turl.addEventListener("click", function () {
   console.log(atOb);
   if (atOb > rzut) {
     wiadRzu.textContent = `Gracz wyrzucił ${rzut} TRAFIENIE!!! Przeciwnik krwawi jak świnia!`;
+    if ((aktywny1 = true)) {
+      zycBo = zycBo - 5;
+    } else if ((aktywny2 = true)) {
+      zycMi = zycMi - 5;
+    }
   } else {
     wiadRzu.textContent = `Atakujący spudłował! \n KOŃCZ WAŚĆ, WSTYYDU OSZCZĘDŹ`;
   }
   rundaNew();
 
-  wstrzasnij('.wolodImg');
+  wstrzasnij(".wolodImg");
+  wstrzasnij(".bohunImg");
+  console.log(zycBo, zycMi);
 });
 
 //projekt paska progresu jako health bar
