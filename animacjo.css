@@ -1,0 +1,22 @@
+.wstrzasniety-nie-mieszany {
+    animation-name: wstrzas;
+    animation-duration: 0.3s;
+    transition: all ease 0.01s;
+    position: relative;
+}
+
+@keyframes wstrzas{
+    0% {
+        left: 0;
+        top: 0;
+    }
+    50% {
+        left: 3px;
+        top: -15px;
+        box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.2);
+    }
+    80% {
+        left: 0;
+        top: 5px;
+    }
+}

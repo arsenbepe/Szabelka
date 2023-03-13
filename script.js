@@ -167,6 +167,8 @@ turl.addEventListener("click", function () {
     wiadRzu.textContent = `Atakujący spudłował! \n KOŃCZ WAŚĆ, WSTYYDU OSZCZĘDŹ`;
   }
   rundaNew();
+
+  wstrzasnij('.wolodImg');
 });
 
 //projekt paska progresu jako health bar
