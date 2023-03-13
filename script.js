@@ -162,7 +162,6 @@ turl.addEventListener("click", function () {
   atOb = atak - obrona;
   console.log(atOb);
   if (atOb > rzut) {
-    health.value -= 10;
     wiadRzu.textContent = `Gracz wyrzucił ${rzut} TRAFIENIE!!! Przeciwnik krwawi jak świnia!`;
   } else {
     wiadRzu.textContent = `Atakujący spudłował! \n KOŃCZ WAŚĆ, WSTYYDU OSZCZĘDŹ`;

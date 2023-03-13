@@ -187,3 +187,7 @@ button:hover {
 
 .health {
 }
+
+html {
+  scroll-behavior: smooth;
+}
