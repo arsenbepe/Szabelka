@@ -26,6 +26,9 @@ let hpBoh = document.querySelector(".hp2");
 let hpki = document.querySelector(".hp");
 const pasekMi = document.querySelector(".miHP");
 const pasekBo = document.querySelector(".boHP");
+let stamMi = document.querySelector(".miSP");
+let stamBo = document.querySelector(".boSP");
+
 document
   .getElementById("jurHP")
   .setAttribute("style", "display:block;width:100%");
@@ -57,6 +60,10 @@ let zycBo = 100;
 let graTrwa = true;
 let aktywny1 = true;
 let aktywny2 = false;
+let staminaMi = 100;
+let staminaBo = 100;
+let atSt = 0;
+let obSt = 0;
 
 //nowa runda
 let restart = function () {
@@ -77,6 +84,8 @@ let restart = function () {
   btnBoh.classList.remove("ramka");
   zycMi = 100;
   zycBo = 100;
+  staminaMi = 100;
+  staminaBo = 100;
   graTrwa = true;
   aktywny1 = true;
   aktywny2 = false;
@@ -85,6 +94,10 @@ let restart = function () {
   pasekBo.textContent = `${zycBo}HP`;
   document.getElementById("wolodHP").style.width = `${zycMi}%`;
   pasekMi.textContent = `${zycMi}HP`;
+  document.getElementById("jurSP").style.width = `${staminaBo}%`;
+  document.getElementById("wolodSP").style.width = `${staminaMi}%`;
+
+  turl.classList.remove("hidden");
 
   wiadRzu.textContent = " ";
   wiadAtt.textContent = " ";
@@ -94,6 +107,7 @@ let restart = function () {
 restart();
 
 let rundaNew = function () {
+  turl.classList.remove("hidden");
   wiadAtt.textContent = " ";
   wiadDef.textContent = " ";
   for (const dekBut of michButDef) {
@@ -110,7 +124,6 @@ let rundaNew = function () {
   }
   btnMich.classList.toggle("ramka");
   btnBoh.classList.toggle("ramka");
-  console.log(btnBoh, btnMich);
   if (aktywny1 === true) {
     aktywny1 = false;
   } else {
@@ -122,6 +135,90 @@ let rundaNew = function () {
   } else {
     aktywny2 = true;
   }
+
+  if (staminaMi <= 0) {
+    for (const dekBut of michButDef) {
+      dekBut.classList.add("hidden");
+    }
+    for (const dekoBut of michButOff) {
+      dekoBut.classList.add("hidden");
+    }
+
+    atak = 0;
+    obrona = 0;
+
+    atSt = 0;
+    obSt = 0;
+  }
+
+  if (staminaBo <= 0) {
+    for (const bekBut of bohButDef) {
+      bekBut.classList.add("hidden");
+    }
+    for (const bekBut of bohButDef) {
+      bekBut.classList.add("hidden");
+    }
+    atak = 0;
+    obrona = 0;
+
+    atSt = 0;
+    obSt = 0;
+  }
+
+  if (zycMi <= 0) {
+    wiadRzu.textContent = `Mały rycerz padł na wznak! Dziki jeździec wygrywa!`;
+
+    for (const dekBut of michButDef) {
+      dekBut.classList.add("hidden");
+    }
+    for (const bekoBut of bohButOff) {
+      bekoBut.classList.add("hidden");
+    }
+    for (const bekBut of bohButDef) {
+      bekBut.classList.add("hidden");
+    }
+    for (const dekoBut of michButOff) {
+      dekoBut.classList.add("hidden");
+    }
+    turl.classList.add("hidden");
+  }
+
+  if (zycBo <= 0) {
+    wiadRzu.textContent = `Dziki jeździec padł na wznak! Mały rycerz wygrywa!`;
+
+    for (const dekBut of michButDef) {
+      dekBut.classList.add("hidden");
+    }
+    for (const bekoBut of bohButOff) {
+      bekoBut.classList.add("hidden");
+    }
+    for (const bekBut of bohButDef) {
+      bekBut.classList.add("hidden");
+    }
+    for (const dekoBut of michButOff) {
+      dekoBut.classList.add("hidden");
+    }
+    turl.classList.add("hidden");
+  }
+
+  if (staminaMi && staminaBo <= 0) {
+    for (const dekBut of michButDef) {
+      dekBut.classList.add("hidden");
+    }
+    for (const bekoBut of bohButOff) {
+      bekoBut.classList.add("hidden");
+    }
+    for (const dekBut of michButOff) {
+      dekBut.classList.remove("hidden");
+    }
+    for (const bekoBut of bohButDef) {
+      bekoBut.classList.remove("hidden");
+    }
+    btnMich.classList.add("ramka");
+    btnBoh.classList.remove("ramka");
+    staminaMi = 100;
+    staminaBo = 100;
+  }
 };
 
 //okreslam parametry opcji ofensywnych i defensywnych
@@ -131,62 +228,74 @@ nowa.addEventListener("click", function () {
 
 akcjeO1C.addEventListener("click", function () {
   atak = 70;
-  wiadAtt.textContent = `Szansa Ataku ${atak}%`;
+  wiadAtt.textContent = `Szansa Ataku ${atak}%  za 4 pkt kondycji`;
+  atSt = 4;
 });
 
 akcjeO1P.addEventListener("click", function () {
   atak = 50;
-  wiadAtt.textContent = `Szansa Ataku ${atak}%`;
+  wiadAtt.textContent = `Szansa Ataku ${atak}%  za 2 pkt kondycji`;
+  atSt = 2;
 });
 
 akcjeO1K.addEventListener("click", function () {
   atak = 90;
-  wiadAtt.textContent = `Szansa Ataku ${atak}%`;
+  wiadAtt.textContent = `Szansa Ataku ${atak}%  za 6 pkt kondycji`;
+  atSt = 6;
 });
 
 akcjeO2C.addEventListener("click", function () {
   atak = 70;
-  wiadAtt.textContent = `Szansa Ataku ${atak}%`;
+  wiadAtt.textContent = `Szansa Ataku ${atak}%  za 4 pkt kondycji`;
+  atSt = 4;
 });
 
 akcjeO2P.addEventListener("click", function () {
   atak = 50;
-  wiadAtt.textContent = `Szansa Ataku ${atak}%`;
+  wiadAtt.textContent = `Szansa Ataku ${atak}%  za 2 pkt kondycji`;
+  atSt = 2;
 });
 
 akcjeO2K.addEventListener("click", function () {
   atak = 90;
-  wiadAtt.textContent = `Szansa Ataku ${atak}%`;
+  wiadAtt.textContent = `Szansa Ataku ${atak}%  za 6 pkt kondycji`;
+  atSt = 6;
 });
 
 akcjeD1B.addEventListener("click", function () {
   obrona = 40;
-  wiadDef.textContent = `Atak pomniejszony ${obrona}%`;
+  wiadDef.textContent = `Atak pomniejszony ${obrona}%  za 3 pkt kondycji`;
+  obSt = 3;
 });
 
 akcjeD1P.addEventListener("click", function () {
   obrona = 20;
-  wiadDef.textContent = `Atak pomniejszony ${obrona}%`;
+  wiadDef.textContent = `Atak pomniejszony ${obrona}%  za 1 pkt kondycji`;
+  obSt = 1;
 });
 
 akcjeD1U.addEventListener("click", function () {
   obrona = 60;
-  wiadDef.textContent = `Atak pomniejszony ${obrona}%`;
+  wiadDef.textContent = `Atak pomniejszony ${obrona}%  za 5 pkt kondycji`;
+  obSt = 5;
 });
 
 akcjeD2B.addEventListener("click", function () {
   obrona = 40;
-  wiadDef.textContent = `Atak pomniejszony ${obrona}%`;
+  wiadDef.textContent = `Atak pomniejszony ${obrona}%  za 3 pkt kondycji`;
+  obSt = 3;
 });
 
 akcjeD2P.addEventListener("click", function () {
   obrona = 20;
-  wiadDef.textContent = `Atak pomniejszony ${obrona}%`;
+  wiadDef.textContent = `Atak pomniejszony ${obrona}%  za 1 pkt kondycji`;
+  obSt = 1;
 });
 
 akcjeD2U.addEventListener("click", function () {
   obrona = 60;
-  wiadDef.textContent = `Atak pomniejszony ${obrona}%`;
+  wiadDef.textContent = `Atak pomniejszony ${obrona}% za 5 pkt kondycji`;
+  obSt = 5;
 });
 
 //TUTAJ JEST RZUT!!!
@@ -196,6 +305,21 @@ turl.addEventListener("click", function () {
   console.log(k100);
   atOb = atak - obrona;
   console.log(atOb);
+  if (aktywny1 === true) {
+    staminaMi = staminaMi - atSt;
+    console.log(staminaMi);
+    staminaBo = staminaBo - obSt;
+    console.log(staminaBo);
+    document.getElementById("jurSP").style.width = `${staminaBo}%`;
+    document.getElementById("wolodSP").style.width = `${staminaMi}%`;
+  } else {
+    staminaMi = staminaMi - obSt;
+    console.log(staminaMi);
+    staminaBo = staminaBo - atSt;
+    console.log(staminaBo);
+    document.getElementById("jurSP").style.width = `${staminaBo}%`;
+    document.getElementById("wolodSP").style.width = `${staminaMi}%`;
+  }
   if (atOb > rzut) {
     wiadRzu.textContent = `Gracz wyrzucił ${rzut} TRAFIENIE!!! Przeciwnik krwawi jak świnia!`;
     if (aktywny1 === true) {
@@ -216,9 +340,3 @@ turl.addEventListener("click", function () {
   wstrzasnij(".bohunImg");
   console.log(zycBo, zycMi);
 });
-
-//projekt paska progresu jako health bar
-//health.value -= 10;
-// btnNew.addEventListener("click", function () {
-//   console.log("Klikasz");
-// });

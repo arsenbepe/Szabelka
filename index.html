@@ -12,22 +12,14 @@
   <body>
     <header>
       <div class="pudloNaKosc">
-        <img
-          src="img/Kostka.svg"
-          class="kostkaImg"
-          alt="kostka"
-        />
+        <img src="img/Kostka.svg" class="kostkaImg" alt="kostka" />
         <div class="wynikRzutu"></div>
       </div>
     </header>
 
     <section>
       <div class="pojLP">
-        <img
-          src="img/wolod.svg"
-          class="wolodImg"
-          alt="wolod"
-        />
+        <img src="img/wolod.svg" class="wolodImg" alt="wolod" />
         <div class="dropdownL" style="float: left">
           <button class="dropbtn ramka">Michał</button>
           <div class="dropdown-contentL" style="left: 0">
@@ -42,17 +34,13 @@
       </div>
       <div class="pojSrod">
         <button class="restart">Restartuj</button>
-        <button class="turlaj">RZUT</button>
+        <button class="turlaj" id="rundeczka">RZUT</button>
         <div class="wiadRzutu">Wiadomość o wyniku rzutu</div>
         <div class="procOff">Procent Ofensywy</div>
         <div class="procDef">Procent Defensywy</div>
       </div>
       <div class="pojLP">
-        <img
-          src="img/9517-bohun-lt3.svg"
-          class="bohunImg"
-          alt="bohun"
-        />
+        <img src="img/9517-bohun-lt3.svg" class="bohunImg" alt="bohun" />
         <div class="dropdownR" style="float: right">
           <button class="dropbtnR">Jurko</button>
           <div class="dropdown-contentR">
@@ -68,24 +56,18 @@
     </section>
 
     <footer>
-      <object data="" type="">
-        <!-- <progress class="hp1"  id="health" value="100" max="100"></progress> -->
-        <div class="miRam">
-          <div class="miHP" id="wolodHP">100</div>
-        </div>
-      </object>
-      <object class="zwieracz" data="" type="">
-        <div>Spacer</div>
-        <div>Punkty staminy</div>
-      </object>
-    <object class="zwieracz" data="" type="">
-      <div>Spacer</div>
-      <div>Punkty</div>
-    </object>
-    <object data="" type="">
-      <!-- <progress class="hp2" id="health" value="100" max="100"></progress> -->
+      <div class="miRam">
+        <div class="miHP" id="wolodHP">100</div>
+      </div>
+
       <div class="boRam">
         <div class="boHP" id="jurHP">100</div>
+      </div>
+      <div class="miSRam">
+        <div class="miSP" id="wolodSP"></div>
+      </div>
+      <div class="boSRam">
+        <div class="boSP" id="jurSP"></div>
       </div>
     </footer>
     <script src="animacjo.js"></script>
